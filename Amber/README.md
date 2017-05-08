@@ -1,4 +1,4 @@
-#Amber PMEMD
+## Amber PMEMD
 
 This is the 'STMV NPT HMR 4fs' case from http://ambermd.org/gpus/benchmarks.htm
 
@@ -26,7 +26,7 @@ hope.
 The GPU runs request all the CPUs (but don't use them) for exclusive
 access to the node.
 
-##Sample wallclock times for the runs:
+### Sample wallclock times for the runs:
 
 `stmv.1.1.1.pbs  -- 00:18:59`
 
