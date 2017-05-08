@@ -1,0 +1,22 @@
+#PBS -N stmv.1.2.2
+#PBS -l nodes=1:ppn=28:gpus=2
+#PBS -l walltime=1:00:00
+#PBS -S /bin/bash
+#PBS -j oe
+#
+# 1 node, 2 ppn, 2 gpu
+#
+module load amber/16
+module load cuda/8.0.44
+#
+job="1.2.2"
+wrk=/fs/scratch/$USER/$PBS_JOBID
+cd $PBS_O_WORKDIR
+mkdir -p $wrk
+cp mdin $wrk
+bzcat < inpcrd.bz2 > $wrk/inpcrd
+bzcat < prmtop.bz2 > $wrk/prmtop
+cd $wrk
+export CUDA_VISIBLE_DEVICES=0,1
+mpiexec -ppn 2 pmemd.cuda.MPI -O -i mdin -o mdout.${job} -p prmtop -c inpcrd
+cp mdout.${job} $PBS_O_WORKDIR

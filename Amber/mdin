@@ -1,0 +1,14 @@
+ Typical Production MD NVT
+ &cntrl
+   ntx=5, irest=1,
+   ntc=2, ntf=2, 
+   nstlim=50000, 
+   ntpr=5000, ntwx=5000,
+   ntwr=50000, 
+   dt=0.004, cut=8.,
+   ntt=1, tautp=10.0,
+   temp0=300.0,
+   ntb=2, ntp=1, barostat=2,
+   ioutfm=1,
+ /
+
