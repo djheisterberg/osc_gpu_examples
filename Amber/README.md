@@ -4,7 +4,7 @@ This is the 'STMV NPT HMR 4fs' case from http://ambermd.org/gpus/benchmarks.htm
 
 There are six run configurations:
 
-`stmv.1.1.1.pbs  -- GPU run, 1 node, 1 cpu, 1 gpu
+`stmv.1.1.1.pbs  -- GPU run, 1 node, 1 cpu, 1 gpu`
 
 `stmv.1.2.2.pbs  -- GPU run, 1 node, 2 cpus, 2 gpus (per node)`
 
