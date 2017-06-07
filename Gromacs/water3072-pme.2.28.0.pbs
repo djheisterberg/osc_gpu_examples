@@ -1,0 +1,22 @@
+#PBS -N water3072-pme.2.28.0
+#PBS -l nodes=2:ppn=28
+#PBS -l walltime=1:00:00
+#PBS -S /bin/bash
+#PBS -j oe
+#
+# 2 nodes, 28 ppn, no gpu
+#
+module load gromacs/5.1.2
+#
+ff="pme"
+job="2.28.0"
+wrk=/fs/scratch/$USER/$PBS_JOBID
+cd $PBS_O_WORKDIR
+mkdir -p $wrk
+cp $ff.mdp $wrk
+cp topol.top $wrk
+bzcat < conf.gro.bz2 > $wrk/conf.gro
+cd $wrk
+gmx grompp -f $ff
+mpiexec gmx_mpi mdrun -nsteps 10000
+cp md.log $PBS_O_WORKDIR/md-$ff.$job.log
